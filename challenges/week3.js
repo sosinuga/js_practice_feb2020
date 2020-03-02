@@ -14,9 +14,8 @@ function camelCaseWords(words) {
   // Your code here!
   let newWords = [words[0]];
   for (let i = 1; i < words.length; i++) {
-    //let newWord = words[i]
 
-    newWords.push(words[i].charAt(0).toUpperCase()+words[i].slice(1));
+    newWords.push(words[i].charAt(0).toUpperCase() + words[i].slice(1));
   }
   return newWords.join('')
 }
@@ -24,6 +23,16 @@ function camelCaseWords(words) {
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
   // Your code here!
+  let count = 0;
+
+  for (let i = 0; i < people.length; i++) {
+    let subject = people[i].subjects;
+    for (let j = 0; j < subject.length; j++) {
+      count++;
+    }
+  }
+  return count;
+
 }
 
 function checkIngredients(menu, ingredient) {
