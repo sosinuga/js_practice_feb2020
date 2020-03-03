@@ -39,7 +39,7 @@ function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
   // Your code here!
-  
+
   for (let i = 0; i < menu.length; i++) {
     let ingr = menu[i].ingredients;
     for (let j = 0; j < ingr.length; j++) {
@@ -55,7 +55,16 @@ function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
   // Your code here!
+  let newArray = [];
+  for (let i = 0; i < arr2.length; i++) {
+    if (arr1.includes(arr2[i])) {
+  
+      newArray.push(arr2[i]);
+    }
+  }
+ return [...new Set(newArray.sort())];
 }
+
 
 module.exports = {
   getSquares,

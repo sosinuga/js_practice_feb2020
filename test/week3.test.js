@@ -6,7 +6,7 @@ const {
   duplicateNumbers
 } = require("../challenges/week3");
 
-describe.only("camelCaseWords", () => {
+describe("camelCaseWords", () => {
   test("camel cases a single word (i.e. no capital letter at beginning)", () => {
     expect(camelCaseWords(["my"])).toBe("my");
   });
@@ -25,7 +25,7 @@ describe.only("camelCaseWords", () => {
   });
 });
 
-describe.only("getSquares", () => {
+describe("getSquares", () => {
   test("returns an empty array if empty array passed", () => {
     expect(getSquares([])).toEqual([]);
   });
@@ -44,7 +44,7 @@ describe.only("getSquares", () => {
   });
 });
 
-describe.only("getTotalSubjects", () => {
+describe("getTotalSubjects", () => {
   test("returns 0 if no people have subjects", () => {
     const people = [
       { name: "Billy", subjects: [] },
@@ -73,7 +73,7 @@ describe.only("getTotalSubjects", () => {
   });
 });
 
-describe.only("checkIngredients", () => {
+describe("checkIngredients", () => {
   test("returns false if no menu items include the specified ingredient", () => {
     const menu = [
       {
