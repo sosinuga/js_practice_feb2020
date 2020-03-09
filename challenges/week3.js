@@ -58,11 +58,11 @@ function duplicateNumbers(arr1, arr2) {
   let newArray = [];
   for (let i = 0; i < arr2.length; i++) {
     if (arr1.includes(arr2[i])) {
-  
+
       newArray.push(arr2[i]);
     }
   }
- return [...new Set(newArray.sort())];
+  return [...new Set(newArray.sort())];
 }
 
 
