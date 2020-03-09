@@ -20,16 +20,35 @@ function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
   // Your code here
+  let namesBeginningWith = names.filter(function (name) {
+    if (name.charAt(0) === char) {
+      return true;
+    }
+  })
+  return namesBeginningWith;
 }
 
 function findVerbs(words) {
   if (!words) throw new Error("words is required");
   // Your code here
+  let verbsOnly = words.filter(function (word) {
+    if (word.startsWith("to ")) {
+
+      return true;
+    }
+  })
+  return verbsOnly;
 }
 
 function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
   // Your code here
+  let integer = nums.filter(function (n) {
+    if (Number.isInteger(n)) {
+      return true;
+    }
+  })
+  return integer;
 }
 
 function getCities(users) {
