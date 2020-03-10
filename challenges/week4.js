@@ -54,11 +54,22 @@ function getIntegers(nums) {
 function getCities(users) {
   if (!users) throw new Error("users is required");
   // Your code here
+  let userCities = [];
+  users.forEach(function (user) {
+    userCities.push(user.data.city.displayName)
+  })
+
+
+  return userCities;
 }
 
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
   // Your code here
+  let squareRoot = nums.map(function (n) {
+    return parseFloat(Math.sqrt(n).toFixed(2));
+  })
+  return squareRoot;
 }
 
 function findSentencesContaining(sentences, str) {
@@ -70,7 +81,21 @@ function findSentencesContaining(sentences, str) {
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
   // Your code here
+
+  let newArray = [];
+
+  for (let j = 0; j < triangles.length; j++) {
+    let longestSide = 0;
+    for (let i = 0; i < triangles[j].length; i++) {
+      if (triangles[j][i] > longestSide) {
+        longestSide = triangles[j][i];
+      }
+    }
+    newArray.push(longestSide)
+  }
+  return newArray;
 }
+
 
 module.exports = {
   findSmallNums,
