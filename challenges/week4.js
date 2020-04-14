@@ -9,11 +9,11 @@ function findSmallNums(nums) {
   }
   return smallNums;*/
 
-  let smallNums = nums.filter(function (n) {
+  return nums.filter(function (n) {
     if (n < 1)
       return true;
   });
-  return smallNums;
+  
 }
 
 function findNamesBeginningWith(names, char) {
