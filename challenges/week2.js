@@ -8,8 +8,11 @@ function getFillings(sandwich) {
 function isFromManchester(person) {
   if (person === undefined) throw new Error("person is required");
   // Your code here!
-  return postCode === "M" && city === "Manchester";
-}
+  if (person.city === "Manchester") {
+   return true;
+  }
+  else return false;
+ }
 
 function getBusNumbers(people) {
   if (people === undefined) throw new Error("people is required");

@@ -12,14 +12,12 @@ function getSquares(nums) {
 function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
   // Your code here!
-
+  let newWords = [words[0]];
   for (let i = 1; i < words.length; i++) {
-
-    [words[0]].push(words[i].charAt(0).toUpperCase() + words[i].slice(1));
+   newWords.push(words[i].charAt(0).toUpperCase() + words[i].slice(1));
   }
   return newWords.join('')
-}
-
+ }
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
   // Your code here!

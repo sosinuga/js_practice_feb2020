@@ -6,13 +6,14 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
-let total = 0;
-  for(let i=0; i<arr.length; i++){
-  if(arr[i]%3===0 ||arr[i]%5===0){
-total += arr[i];
+  if (!Array.isArray(arr)) throw new Error("an array is required");
+  let total = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 3 === 0 || arr[i] % 5 === 0) {
+      total += arr[i];
+    }
   }
-}
-return total;
+  return total;
 };
 
 /**
@@ -23,6 +24,7 @@ return total;
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  if (typeof str !== 'string') throw new Error("a String is required");
 
   return /^[C,c,G,g,T,t,A,a]*$/.test(str);
 };
@@ -36,8 +38,23 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
-  
+  if (typeof str !== 'string') throw new Error("a String is required");
+
+  return str.replace(/./g, function (letter) {
+    return getComplementaryDNA.pairs[letter]
+  })
+
 };
+getComplementaryDNA.pairs = {
+  A: 'T',
+  T: 'A',
+  C: 'G',
+  G: 'C',
+  a: 't',
+  t: 'a',
+  c: 'g',
+  g: 'c',
+}
 
 /**
  * This function should receive a number and return true/false depending on whether it is a prime number or not.
@@ -47,6 +64,11 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+  if (typeof n !== 'number') throw new Error("a number is required");
+
+  for (let i = 2; i < n; i++)
+    if (n % i === 0) return false;
+  return n > 1;
 };
 
 /**
@@ -64,6 +86,12 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+
+  let newArray = [];
+  for (let i = 0; i < n; i++) {
+    newArray.push(Array(n).fill(fill));
+  }
+  return newArray;
 };
 
 /**
@@ -82,6 +110,21 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+
+
+  if (staff.length === 0) {
+    return false;
+  }
+  let count = 0;
+  for (let key in staff) {
+    staff[key].rota.forEach((person) => {
+      if (person === day) {
+        count++;
+      }
+    });
+  }
+  return count >= 3 ? true : false;
+
 };
 
 module.exports = {
