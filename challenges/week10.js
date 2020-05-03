@@ -4,6 +4,13 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+
+  let sum = 0;
+  while (n > 0) {
+    sum = sum + n % 10;
+    n = Math.floor(n / 10);
+  }
+  return sum;
 };
 
 /**
@@ -17,6 +24,21 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+
+  let newArray = [];
+
+  if (step) {
+    for (let i = start; i <= end; i += step) {
+      newArray.push(i);
+    }
+
+  }
+  else {
+    for (let i = start; i <= end; i++) {
+      newArray.push(i);
+    }
+  }
+  return newArray;
 };
 
 /**
@@ -51,6 +73,17 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+
+  let Array = [];
+  users.forEach((name) => {
+    name.screenTime.forEach((time) => {
+      let totalTime = Object.values(time.usage).reduce((a, b) => a + b);
+      if (time.date === date && totalTime > 100) {
+        Array.push(name.username)
+      }
+    })
+  })
+  return Array;
 };
 
 /**
@@ -65,6 +98,20 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+
+  let c;
+  if (/^#[A-Fa-f0-9]{6}$/.test(hexStr)) {
+    c = hexStr.substring(1).split('');
+    if (c.length == 6) {
+      c = [c[0], c[1], c[2], c[3], c[4], c[5]];
+    }
+    c = '0x' + c.join('');
+
+    return "rgb(" + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ")";
+  }
+
+
+
 };
 
 /**
@@ -79,6 +126,18 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      if (board[i][0] === "X" && board[i][0] === board[i][1] && board[i][0]=== board[i][2] ||
+        board[0][j] === "X" && board[0][j] === board[1][j] && board[0][j] === board[2][j]) {
+        return "X";
+      } else if (board[i][0] === "O" && board[i][0] === board[i][1] && board[i][0]=== board[i][2] ||
+        board[0][j] === "O" && board[0][j] === board[1][j] && board[0][j]=== board[2][j]) {
+        return "O";
+      }
+    }
+  } return null;
 };
 
 module.exports = {
